@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page navigatingTo="onNavigatingTo" class="bg-gray-100">
+    <ActionBar title="Game & App Store" class="action-bar">
+        <NavigationButton visibility="collapsed" />
+        <ActionItem tap="{{ onLogout }}" ios.position="right" android.position="actionBar">
+            <Label text="Logout" class="text-white" />
+        </ActionItem>
+    </ActionBar>
+
+    <GridLayout rows="auto, *">
+        <!-- Search Bar -->
+        <GridLayout row="0" columns="*, auto" class="p-4 bg-white elevation-8">
+            <SearchBar col="0" hint="Search games & apps..." text="{{ searchQuery }}" 
+                      submit="{{ onSearch }}" clear="{{ onClearSearch }}"
+                      class="bg-gray-100 rounded-xl" />
+            <Button col="1" text="🔍" class="ml-2 text-purple-600" tap="{{ onSearch }}" />
+        </GridLayout>
+
+        <TabView row="1" selectedIndex="{{ selectedTabIndex }}" class="tab-view">
+            <!-- Games Tab -->
+            <TabViewItem title="Games 🎮">
+                <GridLayout>
+                    <ListView items="{{ games }}" class="list-group" itemTap="{{ onItemTap }}">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, *, auto" rows="auto, auto, auto" class="card">
+                                <Image src="{{ imageUrl }}" width="80" height="80" row="0" rowSpan="3" 
+                                       class="rounded-xl" />
+                                <StackLayout col="1" class="ml-3">
+                                    <Label text="{{ name }}" class="text-lg font-bold text-purple-800" />
+                                    <Label text="{{ category }}" class="text-sm text-gray-500" />
+                                    <GridLayout columns="auto, auto" class="mt-1">
+                                        <Label text="{{ rating }}" class="text-yellow-500" />
+                                        <Label text=" ⭐" col="1" />
+                                    </GridLayout>
+                                </StackLayout>
+                                <StackLayout col="2" row="0" rowSpan="3" class="text-right">
+                                    <Label text="${{ price }}" class="text-lg font-bold text-green-600" />
+                                    <Button text="Download" tap="{{ $parent.onDownload }}" 
+                                            class="btn-primary mt-2" />
+                                </StackLayout>
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                    <ActivityIndicator busy="{{ isLoading }}" class="text-purple-600" />
+                </GridLayout>
+            </TabViewItem>
+
+            <!-- Apps Tab -->
+            <TabViewItem title="Apps 📱">
+                <GridLayout>
+                    <ListView items="{{ apps }}" class="list-group" itemTap="{{ onItemTap }}">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, *, auto" rows="auto, auto, auto" class="card">
+                                <Image src="{{ imageUrl }}" width="80" height="80" row="0" rowSpan="3" 
+                                       class="rounded-xl" />
+                                <StackLayout col="1" class="ml-3">
+                                    <Label text="{{ name }}" class="text-lg font-bold text-purple-800" />
+                                    <Label text="{{ category }}" class="text-sm text-gray-500" />
+                                    <GridLayout columns="auto, auto" class="mt-1">
+                                        <Label text="{{ rating }}" class="text-yellow-500" />
+                                        <Label text=" ⭐" col="1" />
+                                    </GridLayout>
+                                </StackLayout>
+                                <StackLayout col="2" row="0" rowSpan="3" class="text-right">
+                                    <Label text="${{ price }}" class="text-lg font-bold text-green-600" />
+                                    <Button text="Download" tap="{{ $parent.onDownload }}" 
+                                            class="btn-primary mt-2" />
+                                </StackLayout>
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                    <ActivityIndicator busy="{{ isLoading }}" class="text-purple-600" />
+                </GridLayout>
+            </TabViewItem>
+        </TabView>
+    </GridLayout>
+</Page>

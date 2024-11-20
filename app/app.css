@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-gradient {
+    background: linear-gradient(165deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+}
+
+.action-bar {
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+}
+
+.google-btn {
+    background-color: white;
+    color: #374151;
+    font-size: 16;
+    font-weight: bold;
+    padding: 16;
+    border-radius: 12;
+    border-width: 1;
+    border-color: #e5e7eb;
+}
+
+.elevation-8 {
+    elevation: 8;
+    android-elevation: 8;
+}
+
+.tab-view {
+    selected-tab-text-color: #8b5cf6;
+    android-selected-tab-highlight-color: #8b5cf6;
+}
+
+.btn {
+    font-size: 18;
+    padding: 12;
+    border-radius: 12;
+}
+
+.btn-primary {
+    background-color: #8b5cf6;
+    color: white;
+}
+
+.btn-success {
+    background-color: #10b981;
+    color: white;
+}
+
+.card {
+    background-color: white;
+    border-radius: 16;
+    elevation: 4;
+    android-elevation: 4;
+    margin: 8 16;
+    padding: 16;
+}

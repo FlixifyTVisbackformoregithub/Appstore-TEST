@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page navigatingTo="onNavigatingTo" class="bg-gradient">
+    <ActionBar title="Game & App Store" class="action-bar" />
+    
+    <GridLayout rows="*, auto, auto, auto, *" class="p-6">
+        <!-- Top Space -->
+        <StackLayout row="1" class="text-center p-6">
+            <Image src="~/images/store-logo.png" class="h-32 w-32 mx-auto" />
+            <Label text="Game & App Store" class="text-3xl font-bold text-purple-800 mt-4" />
+            <Label text="Your Ultimate Gaming & App Destination" class="text-lg text-gray-600 mt-2" />
+        </StackLayout>
+
+        <!-- Login Section -->
+        <StackLayout row="2" class="bg-white p-6 rounded-xl elevation-8">
+            <Label text="Welcome Back!" class="text-2xl font-bold text-center text-purple-800 mb-2" />
+            <Label text="Sign in to access your favorite games and apps" class="text-center text-gray-600 mb-4" />
+            
+            <Button text="Sign in with Google" tap="{{ onGoogleSignIn }}" 
+                    class="google-btn" />
+        </StackLayout>
+
+        <!-- Features Section -->
+        <GridLayout row="3" columns="*, *, *" class="mt-8">
+            <StackLayout col="0" class="text-center p-2">
+                <Label text="🎮" class="text-2xl" />
+                <Label text="Games" class="font-bold mt-2" />
+                <Label text="Latest Releases" class="text-xs text-gray-600" />
+            </StackLayout>
+            <StackLayout col="1" class="text-center p-2">
+                <Label text="📱" class="text-2xl" />
+                <Label text="Apps" class="font-bold mt-2" />
+                <Label text="Top Rated" class="text-xs text-gray-600" />
+            </StackLayout>
+            <StackLayout col="2" class="text-center p-2">
+                <Label text="⚡" class="text-2xl" />
+                <Label text="Fast" class="font-bold mt-2" />
+                <Label text="Quick Download" class="text-xs text-gray-600" />
+            </StackLayout>
+        </GridLayout>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator busy="{{ isLoading }}" row="2" class="text-purple-600" />
+    </GridLayout>
+</Page>

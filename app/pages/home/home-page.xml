@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page navigatingTo="onNavigatingTo">
+    <ActionBar title="WebStore">
+        <ActionItem tap="{{ onLogout }}" 
+                   ios.position="right" 
+                   android.position="actionBar">
+            <Label text="Logout" class="text-white" />
+        </ActionItem>
+    </ActionBar>
+
+    <TabView selectedIndex="{{ selectedTabIndex }}" class="bg-gray-100">
+        <TabViewItem title="Products">
+            <GridLayout>
+                <ListView items="{{ products }}" class="list-group">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="auto, *" rows="auto, auto" class="p-4 bg-white mb-2 rounded-lg">
+                            <Image src="{{ image }}" width="80" height="80" row="0" rowSpan="2" class="rounded-lg" />
+                            <Label text="{{ name }}" col="1" class="text-lg font-semibold ml-4" />
+                            <StackLayout col="1" row="1" orientation="horizontal" class="ml-4">
+                                <Label text="${{ price }}" class="text-green-600" />
+                                <Button text="Add to Cart" tap="{{ $parent.onAddToCart }}" class="bg-blue-500 text-white px-4 py-1 rounded-lg ml-4" />
+                            </StackLayout>
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </GridLayout>
+        </TabViewItem>
+
+        <TabViewItem title="Cart">
+            <GridLayout rows="*, auto">
+                <ListView items="{{ cartItems }}" class="list-group">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="*, auto" class="p-4 bg-white mb-2">
+                            <Label text="{{ name }}" />
+                            <Label text="${{ price }}" col="1" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+                <StackLayout row="1" class="p-4 bg-white">
+                    <Label text="{{ 'Total: $' + cartTotal }}" class="text-xl font-bold" />
+                    <Button text="Checkout" tap="{{ onCheckout }}" class="bg-green-500 text-white" />
+                </StackLayout>
+            </GridLayout>
+        </TabViewItem>
+    </TabView>
+</Page>
